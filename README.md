@@ -12,7 +12,7 @@
 ## Methods
 - **Baselines:** random, EWMA-IC, Elastic Net
 - **ML:** XGBoost (reg), LambdaMART (ranking)
-- **Sequential:** GRU/LSTM, Transformer encoder, CNN
+- **Sequential:** GRU/LSTM, Transformer encoder, CNN 
 
 ## Target & Metrics
 - Targets: monthly **IC** (Information Coefficient) or L/S **Sharpe** of each alpha
