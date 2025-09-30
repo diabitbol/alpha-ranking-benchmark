@@ -25,7 +25,7 @@ def get_sp500_tickers() -> list[str]:
     sp500 = tables[0]
     return sp500["Symbol"].str.replace('.', '-', regex=False).tolist()
 
-def download_sp500_ohlcv_csv(start="2005-01-01", end="2025-01-01", out_csv="sp500_ohlcv_2005_2025_1.csv"):
+def download_sp500_ohlcv_csv(start="2005-01-01", end="2025-01-01", out_csv="../sp500_ohlcv_2005_2025_1.csv"):
     tickers = get_sp500_tickers()
     print(f"{len(tickers)} tickers récupérés. Exemples: {tickers[:10]}")
 

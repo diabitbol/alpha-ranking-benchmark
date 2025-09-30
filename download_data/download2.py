@@ -9,7 +9,7 @@ import requests
 WIKI_URL = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 START = "2005-01-01"     # <- mets "2005-01-01" si tu veux plus long
 END   = "2025-01-01"
-CSV_OUT = "sp500_ohlcv_2005_2025_2.csv"
+CSV_OUT = "../sp500_ohlcv_2005_2025_2.csv"
 BATCH = 40               # taille des lots (30–60 recommandé)
 MAX_RETRIES = 3
 TIMEOUT = 30
