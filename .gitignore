@@ -1,3 +1,4 @@
 # Ignorer tous les fichiers CSV
 *.csv
+# Ignorer tous les fichiers checkpoints
 *checkpoints
