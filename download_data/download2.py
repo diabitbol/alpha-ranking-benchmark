@@ -1,5 +1,7 @@
 # pip install yfinance pandas requests
 
+#safer dowload than download1.py
+
 import os, time, math
 from typing import List, Tuple
 import pandas as pd
