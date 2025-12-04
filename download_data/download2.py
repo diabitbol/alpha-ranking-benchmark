@@ -71,14 +71,22 @@ def download_batch(tickers: List[str]) -> Tuple[pd.DataFrame, List[str]]:
 
 def append_to_csv(df: pd.DataFrame, path: str):
     # uniformise colonnes
-    keep = [c for c in ["Date","Ticker","Open","High","Low","Close","Volume","Adj Close"] if c in df.columns]
-    df = df[keep]
-    # si Adj Close == Close (auto_adjust=True), on peut drop
-    if "Adj Close" in df.columns and "Close" in df.columns and df["Adj Close"].equals(df["Close"]):
-        df = df.drop(columns=["Adj Close"])
+    # keep = [c for c in ["Date","Ticker","Open","High","Low","Close","Volume","Adj Close"] if c in df.columns]
+    # df = df[keep]
+    # # si Adj Close == Close (auto_adjust=True), on peut drop
+    # if "Adj Close" in df.columns and "Close" in df.columns and df["Adj Close"].equals(df["Close"]):
+    #     df = df.drop(columns=["Adj Close"])
+    # # écriture en mode append (header seulement si fichier absent)
+    # header = not os.path.exists(path)
+    # df.to_csv(path, mode="a", index=False, header=header)
+
+    # Garder uniquement les colonnes utiles : Adj Close supprimé
+    desired_cols = ["Date", "Ticker", "Open", "High", "Low", "Close", "Volume"]
+    df = df.reindex(columns=desired_cols)
     # écriture en mode append (header seulement si fichier absent)
     header = not os.path.exists(path)
     df.to_csv(path, mode="a", index=False, header=header)
+
 
 def main():
     tickers = get_sp500_tickers()
