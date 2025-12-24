@@ -51,8 +51,3 @@
 - All differencing/rolling operations must be **grouped by ticker**.
 - Any scaling/encoding must be **fit on the training set only**, then applied to validation/test.
 
----
-
-## Repository Structure
-> Adapt this section to match your actual repo layout.
-
