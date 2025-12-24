@@ -6,13 +6,6 @@
 - [Objectives](#objectives)
 - [Data](#data)
 - [Methodology](#methodology)
-- [Repository Structure](#repository-structure)
-- [Installation](#installation)
-- [How to Run](#how-to-run)
-- [Key Findings](#key-findings)
-- [Limitations](#limitations)
-- [References](#references)
-- [License](#license)
 
 ---
 
