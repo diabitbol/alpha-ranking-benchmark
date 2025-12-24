@@ -1,24 +1,58 @@
-# Alpha Ranking Benchmark
+# Statistical Analysis of S&P 500 Returns (2005–2025) — Applied Data/Finance Project
 
-**Goal.** Rank financial alphas (signals) from most to least predictive using machine learning on S&P 500 daily OHLCV (2005–2025).
+> Applied statistics/data science project in finance: **descriptive analysis** (stylized facts, volatility, volume, sector heterogeneity) followed by **predictive modeling** (direction classification and return regression) with **time-aware validation**.
 
-**Why.** Hedge funds face a library of hundreds of alphas; most are weak or redundant. We provide a **reproducible benchmark** to compare ranking methods and select robust signals.
+## Table of Contents
+- [Objectives](#objectives)
+- [Data](#data)
+- [Methodology](#methodology)
+- [Repository Structure](#repository-structure)
+- [Installation](#installation)
+- [How to Run](#how-to-run)
+- [Key Findings](#key-findings)
+- [Limitations](#limitations)
+- [References](#references)
+- [License](#license)
+
+---
+
+## Objectives
+1. **Statistically characterize** equity returns (heavy tails, volatility clustering, regimes, drawdowns).
+2. Study the relationships between **volatility**, **trading volume**, and **price range** (High–Low), and quantify **sector-level heterogeneity**.
+3. Evaluate **out-of-sample predictability** under realistic protocols:
+   - **Classification**: predict whether the next return is positive.
+   - **Regression**: predict the magnitude of the next return (or a multi-day horizon).
+
+---
 
 ## Data
-- Source: Yahoo Finance (daily OHLCV) using `yfinance`
-- Universe: S&P 500 (current constituents; note survivorship bias)
-- Period: 2005–2025
+- **Universe**: S&P 500 constituents (based on the list available at data collection time).
+- **Fields**: OHLCV (Open, High, Low, Close, Volume) + sector information (when available).
+- **Frequency**: daily.
+- **Period**: 2005–2025 (depending on availability).
 
-## Methods
-- **Baselines:** random, EWMA-IC, Elastic Net
-- **ML:** XGBoost (reg), LambdaMART (ranking)
-- **Sequential:** GRU/LSTM, Transformer encoder, CNN
+---
 
-## Target & Metrics
-- Targets: monthly **IC** (Information Coefficient) or L/S **Sharpe** of each alpha
-- Metrics: **Spearman ρ**, **NDCG@k**, top-k portfolio **Sharpe/Drawdown/Turnover**, stability (overlap)
+## Methodology
 
-## Reproducibility
-- Rolling time splits (train/val/test)
-- Cross-sectional z-score & cap/sector neutralization
-- Costs & slippage sensitivity
+### I. Descriptive analysis
+- Log-return distributions: skewness, kurtosis, outliers.
+- Rolling volatility (e.g., 5-day / 21-day), clustering, regime changes.
+- Volume and High–Low range as proxies for market activity and price variability.
+- Sector comparisons (volatility/volume/distribution differences).
+
+### II. Predictive modeling
+- Feature engineering (lags, rolling vol, volume/range features, sector variables).
+- **Strictly time-ordered** train/validation/test splits.
+- Models (examples): logistic regression, tree-based models, gradient boosting; analogous models for regression.
+- Metrics: accuracy/AUC for classification, RMSE/MAE for regression.
+
+**Key principle: prevent information leakage**
+- All differencing/rolling operations must be **grouped by ticker**.
+- Any scaling/encoding must be **fit on the training set only**, then applied to validation/test.
+
+---
+
+## Repository Structure
+> Adapt this section to match your actual repo layout.
+
